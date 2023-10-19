@@ -1,3 +1,5 @@
+// mod modeling_clip;
+
 use candle_core::{Device, Result, Tensor};
 
 struct Model {
