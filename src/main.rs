@@ -1,4 +1,7 @@
-// mod modeling_clip;
+mod modeling_clip;
+mod configuration_clip;
+mod quantized_var_builder;
+mod with_tracing;
 
 use candle_core::{Device, Result, Tensor};
 

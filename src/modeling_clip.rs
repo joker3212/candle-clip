@@ -1,4 +1,4 @@
-use candle_core::{Tensor, Module};
+use candle_core::{Tensor, Module, Result};
 use candle_nn::{Activation, VarBuilder};
 use crate::configuration_clip::{CLIPTextConfig, CLIPVisionConfig, CLIPConfig};
 use crate::with_tracing::{Embedding};
@@ -42,6 +42,7 @@ struct CLIPVisionEmbeddings {
     // register_buffer: ,
 }
 
+
 struct CLIPTextEmbeddings {
     config: CLIPTextConfig,
     token_embedding: Embedding,
@@ -50,3 +51,13 @@ struct CLIPTextEmbeddings {
     // register_buffer: 
 }
 
+impl Module for CLIPVisionEmbeddings {
+    fn forward(&self, input_ids: Option<&Tensor>, position_ids: Option<&Tensor>, input_embeds: Option<&Tensor>) -> Result<Tensor> {
+        let _enter = self.span.enter();
+        let seq_length = biz;
+        let position_ids = position_ids.unwrap_or_else(|| self.position_ids[: ,seq_length]);
+        let input_embeds = input_embeds.unwrap_or_else(|| self.token_embedding(input_ids));
+        embeddings = (input_embeds + position_embedding)?;
+        Ok(embeddings)
+    }
+}
